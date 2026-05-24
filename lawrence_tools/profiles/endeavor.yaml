@@ -1,0 +1,175 @@
+# Endeavor — 兩個 LoRA 同時掛載，固定組合
+run_name: endeavor_run
+workflow: workflows/endeavor.json
+output: prompts_endeavor.jsonl
+
+image:
+  width: 832
+  height: 1216
+
+sampling:
+  steps: 40
+  cfg_list: [8.0]
+  seed_range: [42, 44]
+  images_per_seed: 1
+  sampler_list: [dpmpp_2m]
+  scheduler_list: [karras]
+
+# 固定一組多 LoRA combo（順序對應 workflow 中由 Checkpoint 端開始的 LoRA loader 鏈）
+loras:
+  - {name: Expressive_H-000001.safetensors, strength: 1.0}
+  - {name: Endeavor_MHA-000009.safetensors, strength: 1.0}
+
+
+
+prompts:
+  positive:
+    # Positive 1 - Dark Warehouse (強化防女生版)
+    - | 
+      Endeavor, pure muscular bara male, bara muscle beast, extremely muscular male only, huge build, thick powerful legs, plump muscular ass, dense body hair, chest hair, happy trail, face scar, red flame hair, red eyes, eyes rolled back, ahegao, heavy male features, masculine face,
+      dark warehouse, chained to wall with legs lifted high in standing full nelson,
+      brutal all male gangbang, only muscular bara men, 5 muscular bara men surrounding him, no women, no females, no girls, all male cast, yaoi, bara style,
+      triple anal penetration, three thick veiny cocks pounding his anus relentlessly,
+      men grabbing his thick thighs roughly, one man stroking and squeezing his bouncing hard cock, another pulling and twisting his nipples,
+      his hard dick swinging and throbbing with each thrust, heavy balls bouncing, belly bulge visible,
+      severe bright pink prolapse hanging out while still being fucked, cum inflation,
+      sweaty glistening muscular male body, masterpiece, best quality, all male, masculine anatomy, male only
+    # Positive 2 - Dark Alley
+    - |
+      Endeavor, muscular bara, body builder, huge shoulders, thick powerful thighs, massive bouncing pectorals, plump muscular ass, body hair, chest hair, face scar, red flame hair, red eyes, ahegao, heavy blushing,
+      dark neon alley at night, dramatic lighting, hero jacket torn open, pants pulled down to ankles, big boots,
+      intense all male gangbang with 6 muscular bara men, only muscular bara men, no women, no females,
+      three thick veiny cocks triple penetrating his anus simultaneously, rough synchronized thrusting,
+      men grabbing and squeezing his huge bouncing pecs, pinching nipples hard, one man slapping his plump ass, another spreading his thick thighs wide open,
+      his hard cock and heavy balls swinging and bouncing violently with every thrust, precum flying everywhere,
+      extreme anal gape, prolapsing anus being fucked out with each thrust, pink prolapsed rectum visible, anus turned inside out,
+      sweaty glistening muscular body, masterpiece, score_9, score_8_up, bara, dynamic angle, cel shading, all male
+
+    # Positive 3 - Locker Room (pp2)
+    - |
+      Endeavor, bara muscle beast, enormous shoulders, massive chest, thick thighs, plump muscular ass, body hair, face scar, tongue out, ahegao,
+      locker room, bent over bench in deep doggystyle, all male gangbang, only muscular bara men, 6 muscular bara men surrounding him, no women, no females,
+      triple anal penetration in progress, three thick cocks destroying his hole at once, deep rough pounding,
+      men gripping his waist tightly, pulling his hair, one man stroking his swinging hard cock, another squeezing and slapping his heavy pecs,
+      his thick cock and balls bouncing violently with each thrust, precum dripping nonstop,
+      massive prolapse, prolapsed anus hanging while being fucked hard, extreme gape,
+      sweat dripping everywhere, masterpiece, best quality, detailed sweat, dynamic angle, all male
+
+    # Positive 4 - Wrestling Arena (pp3)
+    - |
+      Endeavor, muscular bara, body builder, huge pectorals, thick powerful thighs, round plump ass, body hair, face scar, red hair with flames, crying in pleasure,
+      wrestling arena, lying on back in deep mating press, legs folded to chest, all male gangbang, only muscular bara men, 5 muscular bara men, no women, no females,
+      triple anal penetration, three thick cocks buried deep and thrusting violently,
+      men pinning his thick thighs down, one man sucking and biting his nipple, another choking his thick neck, hands groping all over his muscular body,
+      his hard cock slapping wetly against his abs with every thrust, precum splashing,
+      severe prolapse, anus turned inside out while being fucked, prolapsed rectum visible,
+      bukkake on face and chest, ahegao, masterpiece, score_9, dramatic lighting, all male
+
+    # Positive 5 - Public Rooftop
+    - |
+      Endeavor, bara, massive muscular body, broad back, thick thighs, plump muscular ass, body hair, face scar,
+      public rooftop at night with city lights, held in full nelson suspension by strong bara men,
+      intense all male gangbang, only muscular bara men, no women, no females,
+      triple anal penetration while suspended, three cocks stretching his ruined anus simultaneously,
+      men lifting his thick thighs high, groping and bouncing his massive pecs, one man biting his neck,
+      his hard cock and heavy balls swinging freely in the air with every thrust,
+      massive loose prolapsed anus being fucked in and out, gaping ruined hole,
+      7+ muscular bara men waiting in line, cum on body, drooling, masterpiece, dynamic angle, all male
+
+    # Positive 6 - Hero Agency Office
+    - |
+      Endeavor, muscular bara male, enormous shoulders, thick thighs, massive chest, plump muscular ass, chest hair, face scar, red eyes,
+      hero agency office, bent over desk in standing doggystyle, ass up face down,
+      all male gangbang, only muscular bara men, 5 muscular bara men, no women, no females,
+      triple penetration with four cocks fighting for his stretched hole,
+      men spreading his thick thighs wide, slapping his plump ass bright red, gripping and kneading his huge bouncing pecs,
+      his hard cock hanging down and swinging heavily, slapping against the desk with each thrust,
+      prolapsed anus pushed out with every withdrawal, extreme stretching, cum squirting out,
+      ahegao, heavy blushing, sweaty muscular body, masterpiece, score_9, best quality, all male
+
+  negative:
+    # np0
+    - |
+      score_6, score_5, score_4, lowres, blurry, bad anatomy, bad proportions, deformed, extra anus, multiple anus, pussy, vagina, female genitalia, breasts, female chest, female nipples, woman, girl, 1girl, 1woman, female body, feminine face, feminine body, long hair, makeup, lipstick, (female:1.5), (woman:1.5), (girl:1.4),
+      bad anus, deformed anus, extra limbs, worst quality, low quality, realistic, photorealistic, 3d render
+
+    # np1
+    - |
+      score_6, score_5, score_4, watercolor, lowres, low detail, text, blurry, simple background, monochrome, bad face, ugly face, bad teeth, deformed hands, bad anatomy, interlocked fingers, extra limbs, mutated hands,
+      female, woman, girl, feminine, breasts, long hair, makeup, collar, hat, bald, realistic, 3d, photo
+    # np2
+    - |
+      score_6, score_5, score_4, lowres, blurry, bad anatomy, bad proportions, deformed, extra anus, multiple anus, pussy, vagina, female genitalia, breasts, female chest, female nipples, woman, girl, 1girl, 1woman, 1female, female body, feminine face, feminine body, long hair, makeup, lipstick, eyelashes, (female:1.6), (woman:1.6), (girl:1.5), feminine features,
+      bad anus, deformed anus, extra limbs, worst quality, low quality, realistic, photorealistic, 3d render, photo
+
+    # np3 (大幅強化)
+    - |
+      score_6, score_5, score_4, watercolor, lowres, low detail, text, blurry, simple background, monochrome, bad face, ugly face, bad teeth, deformed hands, bad anatomy, interlocked fingers, extra limbs, mutated hands,
+      female, woman, girl, feminine, breasts, cleavage, long hair, makeup, lipstick, eyelashes, feminine eyes, feminine lips, collar, hat, bald, realistic, 3d, photo, (female body:1.5), (1girl:1.4)
+
+
+
+# prompts:
+#   positive:
+#     - |
+#       Endeavor, muscular bara, body builder, huge shoulders, thick powerful thighs, massive bouncing pectorals, plump muscular ass, body hair, chest hair, face scar, red flame hair, red eyes, ahegao, heavy blushing,
+#       dark neon alley at night, dramatic lighting, hero jacket torn open, pants pulled down to ankles, big boots,
+#       intense gangbang with 6 muscular bara men, three thick veiny cocks triple penetrating his anus simultaneously, rough synchronized thrusting,
+#       men grabbing and squeezing his huge bouncing pecs, pinching nipples hard, one man slapping his plump ass, another spreading his thick thighs wide open,
+#       his hard cock and heavy balls swinging and bouncing violently with every thrust, precum flying everywhere,
+#       extreme anal gape, prolapsing anus being fucked out with each thrust, pink prolapsed rectum visible, anus turned inside out,
+#       sweaty glistening muscular body, masterpiece, score_9, score_8_up, bara, dynamic angle, cel shading
+
+#     - |
+#       Endeavor, bara muscle beast, enormous shoulders, massive chest, thick thighs, plump ass, body hair, face scar, tongue out, ahegao,
+#       locker room, bent over bench in deep doggystyle, 6 muscular bara men surrounding him,
+#       triple anal penetration in progress, three thick cocks destroying his hole at once, deep rough pounding,
+#       men gripping his waist tightly, pulling his hair, one man stroking his swinging hard cock, another squeezing and slapping his heavy pecs,
+#       his thick cock and balls bouncing violently with each thrust, precum dripping nonstop,
+#       massive prolapse, prolapsed anus hanging while still being fucked hard, extreme gape,
+#       sweat dripping everywhere, masterpiece, best quality, detailed sweat, dynamic angle
+
+#     - |
+#       Endeavor, muscular bara, body builder, huge pectorals, thick powerful thighs, round plump ass, body hair, face scar, red hair with flames, crying in pleasure,
+#       wrestling arena, lying on back in deep mating press, legs folded tightly to his chest,
+#       gangbang by 5 muscular bara men, triple anal penetration, three thick cocks buried deep and thrusting violently,
+#       men pinning his thick thighs down, one man sucking and biting his nipple, another choking his thick neck, hands groping all over his body,
+#       his hard cock slapping wetly against his own abs with every powerful thrust, precum splashing,
+#       severe prolapse, anus turned completely inside out while being fucked, prolapsed rectum visible between cocks,
+#       bukkake on face and chest, ahegao, masterpiece, score_9, dramatic lighting
+
+#     - |
+#       Endeavor, bara, massive muscular body, broad back, thick thighs, plump ass, body hair, face scar,
+#       public rooftop at night with city lights, held in full nelson suspension by strong bara men,
+#       intense gangbang, triple anal penetration while suspended, three cocks stretching his ruined anus simultaneously,
+#       men lifting his thick thighs high, groping and bouncing his massive pecs, one man biting his neck and shoulder,
+#       his hard cock and heavy balls swinging freely in the air with every thrust,
+#       massive loose prolapsed anus being fucked in and out, gaping ruined hole,
+#       7+ muscular men waiting in line, cum on body, drooling, masterpiece, dynamic angle
+
+#     - |
+#       Endeavor, muscular bara male, enormous shoulders, thick thighs, massive chest, plump ass, chest hair, face scar, red eyes,
+#       hero agency office, bent over desk in standing doggystyle, ass up face down,
+#       5 muscular bara men gangbanging him hard, triple penetration with four cocks fighting for his stretched hole,
+#       men spreading his thick thighs wide, slapping his plump ass bright red, gripping and kneading his huge bouncing pecs,
+#       his hard cock hanging down and swinging heavily, slapping against the desk with each thrust,
+#       prolapsed anus pushed out with every withdrawal, extreme stretching, cum squirting out,
+#       ahegao, heavy blushing, sweaty muscular body, masterpiece, score_9, best quality
+
+#     - |
+#       Endeavor, bara muscle beast, huge build, thick powerful legs, plump ass, body hair, face scar, eyes rolled back,
+#       dark warehouse, chained to wall with legs lifted high in standing full nelson,
+#       brutal gangbang, triple anal penetration, three thick cocks pounding his anus relentlessly,
+#       men grabbing his thick thighs roughly, one man stroking and squeezing his bouncing hard cock, another pulling and twisting his nipples,
+#       hard dick swinging and throbbing with each thrust, belly bulge visible,
+#       severe bright pink prolapse hanging out while still being fucked, cum inflation,
+#       ahegao, masterpiece, best quality
+
+#   negative:
+#     - |
+#       score_6, score_5, score_4, lowres, blurry, bad anatomy, bad proportions, deformed, extra anus, multiple anus, two anuses, three anuses, split anus, separate holes, multiple holes, extra holes, disconnected anus, 
+#       pussy, vagina, female genitalia, breasts, female chest, female nipples, woman, girl, female, feminine, 1girl, 1woman, (female body:1.4),
+#       bad anus, deformed anus, extra penile, extra dicks, mutated penis, worst quality, low quality, realistic, 3d, photo, photorealistic
+#     - |
+#       score_6, score_5, score_4, watercolor, lowres, low detail, text, blurry, simple background, monochrome, bad face, ugly face, bad teeth, deformed fingers, deformed hands, bad anatomy hands, 
+#       interlocked fingers, poorly drawn hands, extra limbs, mutated hands, long neck, hat, collar, necklace, bald, facial hair on wrong places, feminine face, makeup

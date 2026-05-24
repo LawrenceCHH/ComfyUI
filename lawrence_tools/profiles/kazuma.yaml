@@ -1,0 +1,36 @@
+# Kazuma style sweep — 單一 LoRA，對 strength 做 sweep
+run_name: kazuma_style_sweep
+workflow: workflows/base_workflow.json
+output: prompts_style_sweep.jsonl
+
+image:
+  width: 896
+  height: 1344
+
+sampling:
+  steps: 28
+  cfg_list: [6.0]
+  seed_range: [42, 45]
+  images_per_seed: 1
+  # 不指定 sampler_list / scheduler_list 就沿用 workflow 中的設定
+
+# 單一 LoRA 對 strength 做 sweep：列多個 combo，每個 combo 內可放多個 LoRA
+lora_combos:
+  - - {name: Kazuma_Kiraboshi_-_Illustrious.safetensors, strength: 0.7}
+
+prompts:
+  positive:
+    - |
+      kazuma kiraboshi, #Asuma #gay #Bara #muscle, muscular bara, dark skin, red eyes, black spiky hair, large pectorals, sweaty, locker room, completely naked, ahegao, heavy blushing, embarrassed, kneeling, full nelson, triple anal penetration, three thick cocks in one anus, single stretched anus, one anus stretched extremely wide, double penetration in one hole, triple penetration in same anus, extreme anal gape, loose prolapsing anus, anal stretching, bbc, thick veiny cocks, cum on face, hard dick, thrusting, surrounded by muscular men, gangbang, dynamic pose, masterpiece, score_9, score_8_up, detailed sweat
+    - |
+      kazuma kiraboshi, #gay #Bara #muscle, bara male, dark skin, red eyes, wrestling arena, naked, doggystyle, triple penetration, three cocks stretching one anus, single gaping anus being stretched by three dicks, extreme anal expansion, prolapse, loose anus, ahegao, tongue out, cum overflow, hard thrusting, masterpiece, score_9, score_8_up
+    - |
+      kazuma kiraboshi, #Asuma #gay #Bara #muscle, lying on back, mating press, triple anal, three thick cocks inside single anus, one extremely stretched anus, anal stretching to limit, gaping prolapsed anus, ahegao, blushing, bukkake, detailed male anatomy, masterpiece, score_9, best quality
+    - |
+      threesome, #Asuma #gay #Bara #muscle #AIart, black eyes, forehead protector, konohagakure symbol, stubble, beard, masterpiece, score_9, score_8_up, score_7_up, source_anime, easynegative, 1boy, solo, bandaid on face, bandaged hands, dark skin, black hair, spiked hair, red eyes, embarrassed, blushing, thong, ass focus muscular, toned body, bara, big pectorals, ((wrestling arena, stadium backgrounds)), sweaty, dripping sweat, sweat, sweatdrop, hot, blush, muscular, toned male, athletic build, large pectorals, Naked, nude, locker room, full nelson, legs up, leaning back, blushing, embarrassed, humiliated, led on a leash, surrounded by penises, 6+boys, surrounded by penises, dynamic pose, cum on face, anal sex, dick in ass, gang bang, ahe gao face, ribs, pubic hair, spread anus, anal stretch, loose anus, bbc, gapping, loose ass, prolapsing, anal sex, double penetration, rape, slit anus, squirting, kneel, hard dick, thrusting, prolapse
+
+  negative:
+    - |
+      score_6, score_5, score_4, lowres, blurry, bad anatomy, bad proportions, deformed, extra anus, multiple anus, two anuses, three anuses, split anus, separate holes, multiple holes, extra holes, disconnected anus, pussy, vagina, female genitalia, breasts, female chest, (bad anus:1.3), deformed anus, extra penile, extra dicks, mutated penis, worst quality, low quality, realistic, 3d
+    - |
+      score_6, score_5, score_4, watercolor, lowres, low detail, text, blurry, simple background, low background, monochrome, monochrome background, blurry background, multiple_penises, bad anatomy, bad proportions, deformed, deformed anatomy, messy drawing, amateur drawing, ugly face, bad face, bad teeth, (interlocked fingers, badly drawn hands and fingers, anatomically incorrect hands, bad anatomy), deformed fingers, deformed arms, deformed hands, mutated hands, mutated fingers, glitch, deformed face, mutated tail, double tail, poorly drawn, bad art, boring, deformed, bad composition, crappy artwork, bad lighting, worst quality, poorly drawn, bad art, deformed, necklace, collar, realistic, 3d, facial hair, bald, long neck, hat on head,
