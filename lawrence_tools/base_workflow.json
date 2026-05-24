@@ -1,0 +1,133 @@
+{
+  "1": {
+    "inputs": {
+      "ckpt_name": "waiIllustriousSDXL_v80.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "2": {
+    "inputs": {
+      "lora_name": "Kazuma_Kiraboshi_-_Illustrious.safetensors",
+      "strength_model": 0.7,
+      "model": [
+        "1",
+        0
+      ]
+    },
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "Load LoRA"
+    }
+  },
+  "3": {
+    "inputs": {
+      "seed": 111527607921228,
+      "steps": 28,
+      "cfg": 7,
+      "sampler_name": "euler",
+      "scheduler": "karras",
+      "denoise": 1,
+      "model": [
+        "2",
+        0
+      ],
+      "positive": [
+        "7",
+        0
+      ],
+      "negative": [
+        "8",
+        0
+      ],
+      "latent_image": [
+        "6",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "4": {
+    "inputs": {
+      "samples": [
+        "3",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "6": {
+    "inputs": {
+      "width": 832,
+      "height": 1216,
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "Empty Latent Image"
+    }
+  },
+  "7": {
+    "inputs": {
+      "text": "threesome, #Asuma #gay #Bara #muscle #AIart️️️️️️️️️️️️️️️️️️️️️️️️️️️️️️️️️️️️️️️️️️️️️️️️️️️, black eyes, forehead protector, konohagakure symbol, stubble, beard, masterpiece,score_9, score_8_up, score_7_up, source_anime, easynegative, 1boy, solo, bandaid on face, bandaged hands, dark skin, black hair, spiked hair, red eyes, embarrassed, blushing, thong, ass focus muscular, toned body, bara, big pectorals, ((wrestling arena, stadium backgrounds)), sweaty, dripping sweat, sweat, sweatdrop, , hot, blush, muscular, toned male, athletic build, large pectorals, Naked, nude, locker room, full nelson, legs up, leaning back, , blushing, embarrassed, humiliated, led on a leash,, surrounded by penises, 6+boys, surrounded by penises, dynamic pose, cum on face, anal sex, dick in ass, gang bang, ahe gao face,ribs, pubic hair, spread anus,  anal stretch, loose anus, bbc, gapping, loose ass, prolapsing, anal sex, double penetration, rape, slit anus, squirting, kneel, hard dick, thrusting, prolapse\n",
+      "clip": [
+        "1",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "8": {
+    "inputs": {
+      "text": "score_6, score_5, score_4, watercolor, lowres, low detail, text, blurry, simple background, low background, monochrome, monochrome background, blurry background, multiple_penises, bad anatomy, bad proportions, deformed, deformed anatomy, messy drawing, amateur drawing, ugly face, bad face, bad teeth, (interlocked fingers, badly drawn hands and fingers, anatomically incorrect hands, bad anatomy), deformed fingers, deformed arms, deformed hands, mutated hands, mutated fingers, glitch, deformed face, mutated tail, double tail, poorly drawn, bad art, boring, deformed, bad composition, crappy artwork, bad lighting, worst quality, poorly drawn, bad art, deformed, necklace, collar, realistic, 3d, facial hair, bald, long neck, hat on head,",
+      "clip": [
+        "1",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "10": {
+    "inputs": {
+      "filename_prefix": "myFile",
+      "filename_keys": "steps, cfg",
+      "foldername_prefix": "myPix",
+      "foldername_keys": "sampler_name, scheduler",
+      "delimiter": "underscore",
+      "save_job_data": "basic, prompt",
+      "job_data_per_image": "disabled",
+      "job_custom_text": "",
+      "save_metadata": "enabled",
+      "counter_digits": 3,
+      "counter_position": "last",
+      "one_counter_per_folder": "disabled",
+      "image_preview": "enabled",
+      "images": [
+        "4",
+        0
+      ]
+    },
+    "class_type": "SaveImageExtended",
+    "_meta": {
+      "title": "Save Image Extended"
+    }
+  }
+}
