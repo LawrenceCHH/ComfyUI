@@ -1,6 +1,6 @@
 # Endeavor — 兩個 LoRA 同時掛載，固定組合
-run_name: endeavor_run4
-workflow: workflows/endeavor.json
+run_name: endeavor__any_run
+workflow: workflows/endeavor_any.json
 output: prompts_endeavor.jsonl
 
 image:
@@ -10,7 +10,7 @@ image:
 sampling:
   steps: 40
   cfg_list: [8.0]
-  seed_range: [50, 51]
+  seed_range: [42, 44]
   images_per_seed: 1
   sampler_list: [dpmpp_2m]
   scheduler_list: [karras]
